@@ -23,7 +23,7 @@ export class UserService {
     return this.users.find(user => user.id === id);
   }
 
-  setUer(user: User): void {
+  setUser(user: User): void {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i].id === user.id) {
         this.users[i] = user;
