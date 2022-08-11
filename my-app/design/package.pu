@@ -1,0 +1,54 @@
+@startuml ""
+
+package app {
+    class AppComponent
+    class AppModule
+
+    package dashbord {
+        class DashboardComponent
+    }
+    package header {
+        class HeaderComponent
+    }
+    package menu {
+        class MenuComponent
+    }
+    package tools {
+        package confirm-dialog {
+            class ConfirmDialogComponent
+        }
+    }
+    package user {
+        package user-edit{
+            class UserEditComponent
+        }
+        package user-list {
+            class UserListComponent
+        }
+        class User
+        class UserService
+
+    }
+}
+
+AppModule -down-> AppComponent
+AppModule --> DashboardComponent
+AppModule --> HeaderComponent
+AppModule --> MenuComponent
+AppModule --> UserListComponent
+AppModule --> UserEditComponent
+AppModule --> ConfirmDialogComponent
+AppModule --> UserService
+
+UserListComponent --> UserService
+UserListComponent --> User
+
+UserEditComponent --> UserService
+UserEditComponent --> User
+UserEditComponent --> ConfirmDialogComponent
+
+UserService --> User
+
+
+
+@enduml
