@@ -26,7 +26,9 @@ export class UserEditComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     var user = this.service.getUser(id);
     if (user) {
-      this.user = user;
+      this.service.getUser(id).subscribe(res => {
+        this.user = res;
+      });
     }
   }
 
@@ -47,8 +49,9 @@ export class UserEditComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.service.setUser(user);
-        this.router.navigate(["/users"])    
+        this.service.setUser(user).subscribe( () => {
+          this.router.navigate(["/users"])
+        });
       }
     })
   }
